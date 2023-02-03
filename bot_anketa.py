@@ -117,7 +117,7 @@ async def add_chat(call: types.CallbackQuery, state: FSMContext):
 async def add_chat(call: types.CallbackQuery):
     await call.message.answer(f"Принято")
     call.message.text.split()
-    await BOT.send_message(call.message.text.split()[1], 'заявка одобрена')
+    await BOT.send_message(call.message.text.split()[1], 'Заявка одобрена')
 
 
 @COMMANDS.callback_query_handler(text="edit_data1")
