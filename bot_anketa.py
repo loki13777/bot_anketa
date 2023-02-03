@@ -35,42 +35,42 @@ async def texts(message: types.Message):
         await message.answer("Вы забанены")
         return
     await BOT.delete_message(message.chat.id, message.message_id)
-    await message.answer("1)Как вас зовут?")
+    await message.answer("вопрос 1")
     await Test.state0.set()
 
 
 @COMMANDS.message_handler(state=Test.state0)
 async def write_info(message: types.Message, state: FSMContext):
     await state.update_data(state0=message.text)
-    await message.answer("2)Сколько играете в роблокс и в какие режимы?")
+    await message.answer("вопрос 2")
     await Test.state1.set()
 
 
 @COMMANDS.message_handler(state=Test.state1)
 async def write_info(message: types.Message, state: FSMContext):
     await state.update_data(state1=message.text)
-    await message.answer(f"3)С какой проблемой вы стакивались в роблоксе/жизни? И есть ли у вас идеи потому, как её можно было бы решить?")
+    await message.answer(f"вопрос 3")
     await Test.state2.set()
 
 
 @COMMANDS.message_handler(state=Test.state2)
 async def write_info(message: types.Message, state: FSMContext):
     await state.update_data(state2=message.text)
-    await message.answer("4)Сколько вам лет?")
+    await message.answer("вопрос 4")
     await Test.state3.set()
 
 
 @COMMANDS.message_handler(state=Test.state3)
 async def write_info(message: types.Message, state: FSMContext):
     await state.update_data(state3=message.text)
-    await message.answer("5)Что умеете делать?(К примеру, программировать, писать скрипты, рисовать, делать дизайн, монтировать видео для тик тока или ютуба)")
+    await message.answer("вопрос 5")
     await Test.state4.set()
 
 
 @COMMANDS.message_handler(state=Test.state4)
 async def write_info(message: types.Message, state: FSMContext):
     await state.update_data(state4=message.text)
-    await message.answer("6)Ваш тик ток, ютуб канал(если нет, то напиши '-')")
+    await message.answer("вопрос 6")
     await Test.state5.set()
 
 
@@ -97,12 +97,12 @@ async def add_chat(call: types.CallbackQuery, state: FSMContext):
     for el in group_info_id:
         await BOT.send_message(el, f'id {call.from_user.id}\nюзернейм {call.from_user.username}'
                                           f'\nполное имя {call.from_user.full_name}\n'
-                                          f'1)Как вас зовут?\n-{data0}\n'
-                                          f'2)Сколько играете в роблокс и в какие режимы?\n-{data1}\n'
-                                          f'3)С какой проблемой вы стакивались в роблоксе/жизни? И есть ли у вас идеи потому, как её можно было бы решить?\n-{data2}\n'
-                                          f'4)Сколько вам лет?\n-{data3}\n'
-                                          f'5)Что умеете делать?(К примеру, программировать, писать скрипты, рисовать, делать дизайн, монтировать видео для тик тока или ютуба)\n-{data4}\n'
-                                          f'6)Ваш тик ток, ютуб канал(если нет, то напиши "-")\n-{data5}\n', reply_markup=inline_send_data1)
+                                          f'вопрос 1\n-{data0}\n'
+                                          f'вопрос 2\n-{data1}\n'
+                                          f'вопрос 3\n-{data2}\n'
+                                          f'вопрос 4\n-{data3}\n'
+                                          f'вопрос 5\n-{data4}\n'
+                                          f'вопрос 6\n-{data5}\n', reply_markup=inline_send_data1)
     await state.finish()
 
 
